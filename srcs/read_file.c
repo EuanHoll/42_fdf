@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:36:55 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/05 14:27:03 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 16:26:06 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_list		*read_file(int fd)
 		}
 		elm->content = s1;
 		elm->content_size = sizeof(s1);
+		elm->next = NULL;
 		z++;
 	}
 	return (map);
