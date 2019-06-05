@@ -22,6 +22,13 @@
 # include "keycodes.h"
 # include <stdlib.h>
 
+typedef struct  s_map
+{
+    int     **map;
+    size_t  map_size;
+}               t_map;
+
+
 typedef struct	s_mlx
 {
 	void *info;

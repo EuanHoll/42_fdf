@@ -29,9 +29,9 @@ t_list		*read_file(int fd)
 	t_list	*map;
 	t_list	*elm;
 	char	*s1;
-	size_t	y;
+	size_t	z;
 
-	y = 0;
+	z = 0;
 	map = ft_lstnew(NULL, 0);
 	if (!map)
 		return (NULL);
@@ -39,7 +39,7 @@ t_list		*read_file(int fd)
 	s1 = NULL;
 	while (ft_get_next_line(fd, &s1))
 	{
-		if (y > 0)
+		if (z > 0)
 		{
 			elm->next = ft_lstnew(NULL, 0);
 			if (!elm)
@@ -48,7 +48,7 @@ t_list		*read_file(int fd)
 		}
 		elm->content = s1;
 		elm->content_size = sizeof(s1);
-		y++;
+		z++;
 	}
 	return (map);
 }
