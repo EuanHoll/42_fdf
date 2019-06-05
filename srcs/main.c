@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 11:42:30 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 14:34:44 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 14:55:51 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void 	setup_program(t_mlx *mlx, char *str)
 {
 	str--;
-	drawinfo(mlx, 0x66ff66);
 	hookcontrols(mlx);
+	mlx_loop_hook(mlx->info, fdfloop, mlx);
 }
 
 int		main(int argc, char **argv)
