@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 11:42:30 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 12:55:53 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 13:12:58 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		main(int argc, char **argv)
 	{
 		mlx_info = mlx_init();
 		window = mlx_new_window(mlx_info, 1280, 720, "The Bestest fTf in the worlds.");
+		drawinfo(mlx_info, window, 0x99ff99);
 		mlx_loop(mlx_info);
 	}
 	else
