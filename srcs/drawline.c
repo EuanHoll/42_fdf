@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 16:03:25 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 17:52:14 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 18:10:33 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ static double	rfpart(double x)
 
 void			drawLine(int x0, int y0, int x1, int y1)
 {
-		
+	
 }
