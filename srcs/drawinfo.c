@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   drawinfo.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/05 11:42:30 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 12:55:53 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/06/05 12:36:55 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/06/05 12:55:21 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int argc, char **argv)
+void			drawinfo(void *mlx_info, void *window, int colour)
 {
-	void *mlx_info;
-	void *window;
-
-	argv--;
-	if (argc == 2)
-	{
-		mlx_info = mlx_init();
-		window = mlx_new_window(mlx_info, 1280, 720, "The Bestest fTf in the worlds.");
-		mlx_loop(mlx_info);
-	}
-	else
-	{
-		ft_putendl("Usage : ./fdf [Heightmap File]");
-	}
+	mlx_string_put(mlx_info, window, 0, 0, colour, "Controls :");
+	mlx_string_put(mlx_info, window, 0, 20, colour, "Rotate : WASD");
+	mlx_string_put(mlx_info, window, 0, 40, colour, "Zoom : Mouse Wheel");
+	mlx_string_put(mlx_info, window, 0, 60, colour, "Change Projection : P");
 }
