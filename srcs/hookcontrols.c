@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 13:44:15 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 14:25:57 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 14:43:32 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,18 @@ static int	keycontroller(int key, void *param)
 	return (0);
 }
 
+static int	mouse_zoom(int button, int x, int y, void *param)
+{
+	(void)param;
+	button--;
+	x--;
+	y--;
+	return (0);
+}
+
 void		hookcontrols(t_mlx *mlx)
 {
 	mlx_hook(mlx->win, KEY_PRESS_EVENT, NULL_MASK,keycontroller, (void*)mlx);
 	mlx_hook(mlx->win, CLOSE_EVENT, NULL_MASK, closeprogram, NULL);
+	mlx_mouse_hook(mlx->win, mouse_zoom, mlx);
 }
