@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:36:55 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/05 13:29:57 by lsmienk       ########   odam.nl         */
+/*   Updated: 2019/06/05 14:27:03 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static void		free_content(void *content, size_t content_size)
 {
+	content_size++;
 	ft_memdel(&content);
 }
 
 static t_list	*free_return(t_list *map)
 {
-	ft_lstdel(map, free_content);
+	ft_lstdel(&map, free_content);
 	return (NULL);
 }
 
@@ -35,7 +36,8 @@ t_list		*read_file(int fd)
 	if (!map)
 		return (NULL);
 	elm = map;
-	while (ft_get_next_line(fd, s1))
+	s1 = NULL;
+	while (ft_get_next_line(fd, &s1))
 	{
 		if (y > 0)
 		{
