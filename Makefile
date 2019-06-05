@@ -6,12 +6,12 @@
 #    By: euan <ehollidg@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/04 15:51:09 by euan           #+#    #+#                 #
-#    Updated: 2019/06/05 17:07:19 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/05 18:09:32 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main drawinfo hookcontrols read_file closeprogram fdfloop plotpoint \
-      inbounds
+      inbounds swap dlgradient
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = fdf

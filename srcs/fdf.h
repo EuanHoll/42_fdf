@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/05 17:33:40 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 18:09:26 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,7 @@ int				closeprogram(void *param);
 int				fdfloop(void *param);
 int				inbounds(int x, int y);
 void			plotpoint(int x, int y, int colour, void *img_add);
+void			swap(void *i, void *j);
+float			dlgradient(int x0, int y0, int x1, int y1);
 
 #endif
