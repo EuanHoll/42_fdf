@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/05 12:45:05 by lsmienk       ########   odam.nl         */
+/*   Updated: 2019/06/05 13:28:58 by lsmienk       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "libft.h"
 # include "mlx.h"
 
-char        **read_file(char *str);
+t_list        *read_file(int fd);
 
 #endif
