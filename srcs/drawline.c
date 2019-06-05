@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 16:03:25 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 18:25:40 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/05 18:28:16 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void			drawLine(int x0, int y0, int x1, int y1)
 
 	gradient = dlgradient(&x0, &y0, &x1, &y1);
 	intery = (y0 + gradient * (round(x0) - x0)) + gradient;
-	xpx11 = hendpoint(x0, y0, abs(y1 - y0) > abs(x1 - x0));
+	xpx11 = hendpoint(x0, y0, );
 }
