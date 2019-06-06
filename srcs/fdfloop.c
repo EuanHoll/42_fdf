@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 14:54:23 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 17:41:31 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/06 11:43:29 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int			fdfloop(void *param)
 	mlx = (t_mlx *)param;
 	ft_bzero(mlx->img_add, SCREEN_VOL_BYTES);
 	buildimg(mlx);
+	drawline(&(struct s_point){3, 5}, &(struct s_point){1200, 700}, mlx);
 	mlx_put_image_to_window(mlx->info, mlx->win, mlx->img, 0, 0);
 	drawinfo(mlx, LIME);
 	return (1);

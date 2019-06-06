@@ -6,12 +6,12 @@
 #    By: euan <ehollidg@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/04 15:51:09 by euan           #+#    #+#                 #
-#    Updated: 2019/06/05 18:09:32 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/06 11:46:48 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main drawinfo hookcontrols read_file closeprogram fdfloop plotpoint \
-      inbounds swap dlgradient
+      inbounds swap dlgradient fpart rfpart drawline doubletocolour 
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = fdf
@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): $(SRCF)
 	make -C libft/ fclean && make -C libft/
-	make -C minilibx/ clean && make -C minilibx/
+	make -C minilibx/ clean && make -C minilibx/ 
 	clang -Wall -Werror -Wextra -I minilibx -I libft/includes -c $(SRCF)
 	clang -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX)
 

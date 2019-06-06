@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/05 18:21:38 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/06 11:05:25 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h> //REMOVE
+
+typedef struct	s_point
+{
+	double		x;
+	double		y;
+}				t_point;
 
 typedef struct  s_map
 {
@@ -44,6 +50,10 @@ int				fdfloop(void *param);
 int				inbounds(int x, int y);
 void			plotpoint(int x, int y, int colour, void *img_add);
 void			swap(void *i, void *j);
-double			dlgradient(int *x0, int *y0, int *x1, int *y1);
+double			dlgradient(t_point *p0, t_point *p1, int steep);
+double			fpart(double x);
+double			rfpart(double x);
+int				doubletocolour(double val);
+void			drawline(t_point *p0, t_point *p1, t_mlx *mlx);
 
 #endif

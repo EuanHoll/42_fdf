@@ -6,43 +6,111 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 16:03:25 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 18:28:16 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/06 11:43:08 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static double	fpart(double x)
+static void		loopa(double *xpx, double gradient, double intery, t_mlx *mlx)
 {
-	return (x - floor(x));
+	double x;
+	double end;
+
+	x = xpx[0] + 1;
+	end = xpx[1] - 1;
+	while (x < end)
+	{
+		plotpoint((int)round(intery), x,
+					doubletocolour(rfpart(intery)), mlx->img_add);
+		plotpoint((int)round(intery) + 1, x,
+					doubletocolour(fpart(intery)), mlx->img_add);
+		intery = intery + gradient;
+		x++;
+	}
 }
 
-static double	rfpart(double x)
+static void		loopb(double *xpx, double gradient, double intery, t_mlx *mlx)
 {
-	return (1 - fpart(x));
+	double x;
+	double end;
+
+	x = xpx[0] + 1;
+	end = xpx[1] - 1;
+	while (x < end)
+	{
+		plotpoint(x, (int)round(intery),
+					doubletocolour(rfpart(intery)), mlx->img_add);
+		plotpoint(x, (int)round(intery) + 1,
+					doubletocolour(fpart(intery)), mlx->img_add);
+		intery = intery + gradient;
+		x++;
+	}
 }
 
-static double	hendpoint(int x0, int y0, double gradient, int steep)
+static double	hendpoint(t_point *p0, double gradient, int steep, t_mlx *mlx)
 {
 	double yend;
 	double xgap;
 	double xpx11;
 	double ypx11;
 
-	yend  = y0 + gradient * (round(x0) - x0);
-	xgap = rfpart((double)x0 + 0.5);
-	xpx11 = round(x0);
+	yend  = p0->y + gradient * (round(p0->x) - p0->x);
+	xgap = rfpart(p0->x + 0.5);
+	xpx11 = round(p0->x);
 	ypx11 = floor(yend);
-	if ()
+	if (steep)
+	{
+		plotpoint(ypx11, xpx11, rfpart(yend) * xgap, mlx->img_add);
+		plotpoint(ypx11 + 1, xpx11, fpart(yend) * xgap, mlx->img_add);
+	}
+	else
+	{
+		plotpoint(xpx11, ypx11, rfpart(yend) * xgap, mlx->img_add);
+		plotpoint(xpx11, ypx11 + 1, fpart(yend) * xgap, mlx->img_add);
+	}
+	return (xpx11);
 }
 
-void			drawLine(int x0, int y0, int x1, int y1)
+static double	hsendpoint(t_point *p1, double gradient, int steep, t_mlx *mlx)
 {
-	double gradient;
-	double intery;
-	double xpx11;
+	double yend;
+	double xgap;
+	double xpx12;
+	double ypx12;
 
-	gradient = dlgradient(&x0, &y0, &x1, &y1);
-	intery = (y0 + gradient * (round(x0) - x0)) + gradient;
-	xpx11 = hendpoint(x0, y0, );
+	xpx12 = round(p1->x);
+	yend = p1->y + gradient * (xpx12 - p1->x);
+	ypx12 = floor(yend);
+	xgap = rfpart(p1->x + 0.5);
+	if (steep)
+	{
+		plotpoint(ypx12, xpx12, rfpart(yend) * xgap, mlx->img_add);
+		plotpoint(ypx12 + 1, xpx12, fpart(yend) * xgap, mlx->img_add);
+	}
+	else
+	{
+		plotpoint(xpx12, ypx12, rfpart(yend) * xgap, mlx->img_add);
+		plotpoint(xpx12, ypx12 + 1, fpart(yend) * xgap, mlx->img_add);
+	}
+	return (xpx12);
+}
+
+void			drawline(t_point *p0, t_point *p1, t_mlx *mlx)
+{
+	double	gradient;
+	double	intery;
+	double	xpx11;
+	double	xpx12;
+	int		steep;
+
+	steep = fabs(p1->y - p0->y) > fabs(p1->x - p0->x);
+	gradient = dlgradient(p0, p1, steep);
+	intery = (p0->y + gradient * (round(p0->x) - p0->x)) + gradient;
+	xpx11 = hendpoint(p0, gradient, steep, mlx);
+	xpx12 = hsendpoint(p1, gradient, steep, mlx);
+	if (steep)
+		loopa((double[]){xpx11, xpx12}, gradient, intery, mlx);
+	else
+		loopb((double[]){xpx11, xpx12}, gradient, intery, mlx);
 }
