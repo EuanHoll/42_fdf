@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 16:03:25 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/06 11:43:08 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/06 12:20:53 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void		loopa(double *xpx, double gradient, double intery, t_mlx *mlx)
 	while (x < end)
 	{
 		plotpoint((int)round(intery), x,
-					doubletocolour(rfpart(intery)), mlx->img_add);
+					doubletocolour(rfpart(intery), PYXIS), mlx->img_add);
 		plotpoint((int)round(intery) + 1, x,
-					doubletocolour(fpart(intery)), mlx->img_add);
+					doubletocolour(fpart(intery), PYXIS), mlx->img_add);
 		intery = intery + gradient;
 		x++;
 	}
@@ -40,9 +40,9 @@ static void		loopb(double *xpx, double gradient, double intery, t_mlx *mlx)
 	while (x < end)
 	{
 		plotpoint(x, (int)round(intery),
-					doubletocolour(rfpart(intery)), mlx->img_add);
+					doubletocolour(rfpart(intery), PYXIS), mlx->img_add);
 		plotpoint(x, (int)round(intery) + 1,
-					doubletocolour(fpart(intery)), mlx->img_add);
+					doubletocolour(fpart(intery), PYXIS), mlx->img_add);
 		intery = intery + gradient;
 		x++;
 	}

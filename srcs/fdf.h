@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/06 11:48:37 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/06 12:16:51 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void			swap(void *i, void *j);
 double			dlgradient(t_point *p0, t_point *p1, int steep);
 double			fpart(double x);
 double			rfpart(double x);
-int				doubletocolour(double val);
+int				doubletocolour(double val, int colour);
 void			drawline(t_point *p0, t_point *p1, t_mlx *mlx);
 void			bcolour(t_mlx *mlx, int colour);
 
