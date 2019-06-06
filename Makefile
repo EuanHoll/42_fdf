@@ -6,13 +6,13 @@
 #    By: euan <ehollidg@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/04 15:51:09 by euan           #+#    #+#                 #
-#    Updated: 2019/06/06 11:57:38 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/06 15:14:10 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main drawinfo hookcontrols read_file closeprogram fdfloop plotpoint \
     	inbounds swap dlgradient fpart rfpart drawline doubletocolour \
-		bcolour
+		bcolour isoproject drawmap
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = fdf
@@ -26,8 +26,8 @@ $(NAME): $(SRCF)
 	@make -C libft/
 	@make -C minilibx/
 	@echo "Compiling Program"
-	@clang -Wall -Werror -Wextra -I minilibx -I libft/includes -c $(SRCF)
-	@clang -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX)
+	@clang -Wall -Werror -Wextra -I minilibx -I libft/includes -c $(SRCF) -g
+	@clang -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX) -g
 	@echo "Finished"
 
 clean:
