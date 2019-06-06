@@ -6,7 +6,7 @@
 #    By: ehollidg <ehollidg@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/21 14:51:46 by ehollidg       #+#    #+#                 #
-#    Updated: 2019/04/09 12:06:24 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/06 12:00:26 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,21 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Werror -Wextra -c $(SRCF) -g -I ./includes
-	ar -rcsv $(NAME) $(OBJ)
+	@echo "Compiling $(NAME)"
+	@gcc -Wall -Werror -Wextra -c $(SRCF) -g -I ./includes
+	@ar -rcsv $(NAME) $(OBJ)
+	@echo "Compilied $(NAME)"
 
 clean:
-	rm -f $(OBJ) ./includes/libft.gch
+	@echo "Cleaning"
+	@rm -f $(OBJ) ./includes/libft.gch
+	@echo "Finished"
 
 mclean: $(NAME) clean
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "Removing $(NAME)"
+	@rm -f $(NAME)
+	@echo "Finished"
 
 re: fclean all
