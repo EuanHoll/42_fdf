@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 11:42:30 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/07 16:09:23 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 16:48:01 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,23 @@ static void		init_map_settings(t_map *map)
 	map->transform.z = 0;
 }
 
-static void 	setup_program(t_mlx *mlx, char *str)
+static void		setup_program(t_mlx *mlx, char *str)
 {
 	int		tmp;
-	//int		fd;
-	//t_list	*list;
+	int		fd;
+	t_list	*list;
 
 	str--;
 	tmp = 0;
-	//fd = open(str, O_RDONLY);
-	//list = read_file(fd);
+	fd = open(str, O_RDONLY);
+	printf("before reading");
+	list = read_file(fd);
 	mlx->img = mlx_new_image(mlx->info, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->img_add = mlx_get_data_addr(mlx->img, &tmp, &tmp, &tmp);
 	mlx->map = (t_map *)ft_memalloc(sizeof(t_map));
 	init_map_settings(mlx->map);
-	gen(mlx->map);
+	printf("before converting");
+	convert_file(mlx->map, list);
 	hookcontrols(mlx);
 	mlx_loop_hook(mlx->info, fdfloop, (void *)mlx);
 }
@@ -73,6 +75,7 @@ int		main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		printf("1 argument");
 		mlx.info = mlx_init();
 		mlx.win = mlx_new_window(mlx.info, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"The Bestest fTf in the worlds.");
