@@ -12,7 +12,7 @@
 
 SRC = main drawinfo hookcontrols read_file closeprogram fdfloop plotpoint \
     	inbounds swap dlgradient fpart rfpart drawline doubletocolour \
-		bcolour isoproject drawmap
+		bcolour isoproject drawmap convert_file
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = fdf
