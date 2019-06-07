@@ -54,7 +54,6 @@ static void 	setup_program(t_mlx *mlx, char *str)
 	int		fd;
 	t_list	*list;
 
-	str--;
 	tmp = 0;
 	fd = open(str, O_RDONLY);
 	list = read_file(fd);
