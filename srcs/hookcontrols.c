@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 13:44:15 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 14:55:41 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 12:29:44 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,38 @@
 
 static int	keycontroller(int key, void *param)
 {
-	if (key == ESC)
+	t_mlx *mlx;
+
+	mlx = (t_mlx*)param;
+	if (key == KEY_ESC)
 		closeprogram(param);
+	else if (key == KEY_A)
+		mlx->map->transform.x *= 1.1;
+	else if (key == KEY_D)
+		mlx->map->transform.x /= 1.1;
+	else if (key == KEY_W)
+		mlx->map->transform.z *= 1.1;
+	else if (key == KEY_S)
+		mlx->map->transform.z /= 1.1;
+	else if (key == KEY_Z)
+		mlx->map->transform.y *= 1.1;
+	else if (key == KEY_X)
+		mlx->map->transform.y /= 1.1;
+	if (key == KEY_A || key == KEY_D)
+		printf("X Transform :  %f\n", mlx->map->transform.x);
 	return (0);
 }
 
 static int	mouse_zoom(int button, int x, int y, void *param)
 {
-	(void)param;
-	button--;
-	x--;
-	y--;
+	t_mlx *mlx;
+
+	x -=y;
+	mlx = (t_mlx*)param;
+	if (button == 4)
+		mlx->map->zoom *= 1.1;
+	else if (button == 5)
+		mlx->map->zoom /= 1.1;
 	return (0);
 }
 
