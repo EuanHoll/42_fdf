@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 14:27:10 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/05 14:27:10 by lsmienk       ########   odam.nl         */
+/*   Updated: 2019/06/07 17:03:58 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	place_in_map(t_list *elem, t_map *map, int x)
 	int		i;
 	int		y;
 
-	printf("Str -> %p\n", (char*)(elem->content));
 	split = ft_strsplit((char*)(elem->content), ' ');
 	y = 0;
 	i = 0;
@@ -26,6 +25,7 @@ static void	place_in_map(t_list *elem, t_map *map, int x)
 	while (y < map->map_size.y - 1)
 	{
 		map->map[x][y] = ft_atoi(split[i]);
+		i++;
 		y++;
 	}
 }
