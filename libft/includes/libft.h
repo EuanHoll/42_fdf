@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/20 13:57:33 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/04/17 19:07:48 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 13:11:55 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,5 +117,6 @@ int				ft_max(int i1, int i2);
 double			ft_floor(double fl);
 double			ft_ceil(double cl);
 int				ft_get_next_line(const int fd, char **line);
+size_t			ft_strgetoc(char *str, char c, size_t i);
 
 #endif
