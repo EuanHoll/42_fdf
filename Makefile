@@ -6,13 +6,13 @@
 #    By: euan <ehollidg@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/04 15:51:09 by euan           #+#    #+#                 #
-#    Updated: 2019/06/07 16:15:19 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/07 17:05:49 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main drawinfo hookcontrols read_file closeprogram fdfloop plotpoint \
-    	inbounds swap dlgradient fpart rfpart drawline doubletocolour \
-		bcolour isoproject drawmap convert_file
+    	inbounds swap doubletocolour bcolour isoproject drawmap \
+		convert_file
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = fdf
