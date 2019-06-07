@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/07 12:02:40 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 15:36:18 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ double			rfpart(double x);
 int				doubletocolour(double val, int colour);
 void			drawline(t_point *p0, t_point *p1, t_mlx *mlx);
 void			bcolour(t_mlx *mlx, int colour);
-t_point			*isoproject(int x, int y, int z);
+t_point			*isoproject(int x, int z, int y);
 void			drawmap(t_map *map, t_mlx *mlx);
 
 #endif

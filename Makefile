@@ -6,7 +6,7 @@
 #    By: euan <ehollidg@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/04/04 15:51:09 by euan           #+#    #+#                 #
-#    Updated: 2019/06/06 15:14:10 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/07 16:15:19 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ OBJ = $(SRC:%=%.o)
 NAME = fdf
 MINILIBX = -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
 LIBFT = -I libft/includes -L libft -lft
+FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -26,7 +27,7 @@ $(NAME): $(SRCF)
 	@make -C libft/
 	@make -C minilibx/
 	@echo "Compiling Program"
-	@clang -Wall -Werror -Wextra -I minilibx -I libft/includes -c $(SRCF) -g
+	@clang $(FLAGS) -I minilibx -I libft/includes -c $(SRCF) -g
 	@clang -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX) -g
 	@echo "Finished"
 

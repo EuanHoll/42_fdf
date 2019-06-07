@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 13:44:15 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/07 12:29:44 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 14:40:04 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,17 @@ static int	keycontroller(int key, void *param)
 	if (key == KEY_ESC)
 		closeprogram(param);
 	else if (key == KEY_A)
-		mlx->map->transform.x *= 1.1;
+		mlx->map->transform.x -= 6;
 	else if (key == KEY_D)
-		mlx->map->transform.x /= 1.1;
+		mlx->map->transform.x += 6;
 	else if (key == KEY_W)
-		mlx->map->transform.z *= 1.1;
+		mlx->map->transform.z += 6;
 	else if (key == KEY_S)
-		mlx->map->transform.z /= 1.1;
+		mlx->map->transform.z -= 6;
 	else if (key == KEY_Z)
-		mlx->map->transform.y *= 1.1;
+		mlx->map->transform.y += 6;
 	else if (key == KEY_X)
-		mlx->map->transform.y /= 1.1;
-	if (key == KEY_A || key == KEY_D)
-		printf("X Transform :  %f\n", mlx->map->transform.x);
+		mlx->map->transform.y -= 6;
 	return (0);
 }
 
