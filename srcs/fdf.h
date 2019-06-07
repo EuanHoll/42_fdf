@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/07 17:05:27 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 17:16:23 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int				closeprogram(void *param);
 int				fdfloop(void *param);
 int				inbounds(int x, int y);
 void			plotpoint(int x, int y, int colour, void *img_add);
-void			swap(void *i, void *j);
 int				doubletocolour(double val, int colour);
 void			bcolour(t_mlx *mlx, int colour);
 t_point			*isoproject(int x, int z, int y);
