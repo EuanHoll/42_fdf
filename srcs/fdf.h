@@ -17,6 +17,7 @@
 # include "mlx.h"
 # include "keycodes.h"
 # include "values.h"
+# include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
 # include <stdio.h> //REMOVE
@@ -47,6 +48,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 t_list			*read_file(int fd);
+t_map			*convert_file(t_map *map, t_list *lst);
 void			drawinfo(t_mlx *mlx, int colour);
 void			hookcontrols(t_mlx *mlx);
 int				closeprogram(void *param);

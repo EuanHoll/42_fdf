@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static void		gen(t_map *map)
+/*static void		gen(t_map *map)
 {
 	int i;
 	int j;
@@ -35,18 +35,22 @@ static void		gen(t_map *map)
 		}
 		i++;
 	}
-}
+}*/
 
-static void 	setup_program(t_mlx *mlx, char *str)
+static void		setup_program(t_mlx *mlx, char *str)
 {
-	int tmp;
+	int		tmp;
+	int		fd;
+	t_list	*list;
 
 	str--;
 	tmp = 0;
+	fd = open(str, O_RDONLY);
+	list = read_file(fd);
 	mlx->img = mlx_new_image(mlx->info, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->img_add = mlx_get_data_addr(mlx->img, &tmp, &tmp, &tmp);
 	mlx->map = (t_map *)ft_memalloc(sizeof(t_map));
-	gen(mlx->map);
+	convert_file(mlx->map, list);
 	hookcontrols(mlx);
 	mlx_loop_hook(mlx->info, fdfloop, (void *)mlx);
 }

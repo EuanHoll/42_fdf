@@ -12,33 +12,38 @@
 
 #include "fdf.h"
 
-static int	get_size(t_list *lst)
+static void	place_in_map(t_list *elem, t_map *map, int z)
 {
-	return (ft_strcc((char*) lst->content, ' ') * ft_lstcnt(lst));
+	char	*line;
+	int		i;
+	int		x;
+
+	line = (char*)(elem->content);
+	x = 0;
+	i = 0;
+	map->map[z] = (int*)ft_memalloc(sizeof(int) * map->map_size.x);
+	while (x < map->map_size.x)
+	{
+		map->map[z][x] = ft_atoi(&line[i]);
+		x++;
+	}
 }
 
-void		place_in_map(t_list *elem, t_map *grid, int z)
+t_map		*convert_file(t_map *map, t_list *lst)
 {
-	while (x < grid->map_size - 1)
-		{
-			grid->map[x][z] = ;
-		}
-}
-
-t_map		convert_file(t_list *lst)
-{
-	t_map	*grid;
 	t_list	*elem;
 	int		z;
 
-	grid = (t_map*)ft_memalloc(sizeof(t_map));
+	map->map_size.x = ft_strcc((char*)lst->content, ' ');
+	map->map_size.y = ft_lstcnt(lst);
+	map->map = (int**)ft_memalloc(sizeof(int*) * map->map_size.y);
 	elem = lst->content;
 	z = 0;
-	grid->map_size = get_size(lst);
-	while (lst->next != NULL)
+	while (z < map->map_size.y)
 	{
-		place_in_map(elem, grid, z);
+		place_in_map(elem, map, z);
 		elem = elem->next;
 		z++;
 	}
+	return (map);
 }
