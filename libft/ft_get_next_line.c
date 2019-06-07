@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line.c                                    :+:    :+:            */
+/*   ft_get_next_line.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
@@ -18,7 +18,10 @@ static int		ret_newline(char *str, char **line, int read_in)
 
 	i = ft_strfroc(str, '\n');
 	*line = ft_strjoinf(*line, ft_struntil(str, i));
-	str = ft_strtailf(&str, i + 1);
+	if (str[i + 1])
+		str = ft_strtailf(&str, i + 1);
+	else
+		ft_strclr(str);
 	if (!str || !*line)
 		return (-1);
 	if (ft_strlen(*line) > 0 || read_in > 0)

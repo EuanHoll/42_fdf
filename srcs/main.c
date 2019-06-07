@@ -48,7 +48,7 @@ static void		init_map_settings(t_map *map)
 	map->transform.z = 1;
 }
 
-static void 	setup_program(t_mlx *mlx, char *str)
+static void		setup_program(t_mlx *mlx, char *str)
 {
 	int		tmp;
 	int		fd;
@@ -56,11 +56,13 @@ static void 	setup_program(t_mlx *mlx, char *str)
 
 	tmp = 0;
 	fd = open(str, O_RDONLY);
+	printf("before reading");
 	list = read_file(fd);
 	mlx->img = mlx_new_image(mlx->info, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->img_add = mlx_get_data_addr(mlx->img, &tmp, &tmp, &tmp);
 	mlx->map = (t_map *)ft_memalloc(sizeof(t_map));
 	init_map_settings(mlx->map);
+	printf("before converting");
 	convert_file(mlx->map, list);
 	hookcontrols(mlx);
 	mlx_loop_hook(mlx->info, fdfloop, (void *)mlx);
@@ -72,6 +74,7 @@ int		main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		printf("1 argument");
 		mlx.info = mlx_init();
 		mlx.win = mlx_new_window(mlx.info, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"The Bestest fTf in the worlds.");

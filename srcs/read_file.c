@@ -37,7 +37,7 @@ t_list		*read_file(int fd)
 		return (NULL);
 	elm = map;
 	s1 = NULL;
-	while (ft_get_next_line(fd, &s1))
+	while (ft_get_next_line(fd, &s1) == 1)
 	{
 		if (z > 0)
 		{
@@ -46,7 +46,7 @@ t_list		*read_file(int fd)
 				return (free_return(map));
 			elm = elm->next;
 		}
-		elm->content = s1;
+		elm->content = (void*)s1;
 		elm->content_size = sizeof(s1);
 		elm->next = NULL;
 		z++;
