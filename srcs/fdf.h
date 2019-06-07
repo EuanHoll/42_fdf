@@ -6,7 +6,7 @@
 /*   By: lsmienk <lsmienk@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/06/05 12:39:44 by lsmienk        #+#    #+#                */
-/*   Updated: 2019/06/06 14:40:05 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/07 12:02:40 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct  s_map
     int			**map;
     t_point		map_size;
 	t_point		rotation;
+	t_point		transform;
 	double		zoom;
 }               t_map;
 
