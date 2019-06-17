@@ -12,20 +12,17 @@
 
 #include "fdf.h"
 
-t_point		*isoproject(int x, int z, int y)
+t_point		*isoproject(t_point *pos, t_point *offset)
 {
 	int		pre_x;
 	int		pre_z;
 	int		pre_y;
-	t_point	*p;
 
-	pre_x = x;
-	pre_z = z;
-	pre_y = y;
-	x = (pre_x + pre_z) * cos(0.523599);
-	z = ((pre_x - pre_z) *  sin(0.523599)) - pre_y;
-	p = (t_point*)ft_memalloc(sizeof(t_point));
-	p->x = x;
-	p->y = z;
-	return (p);
+	pre_x = (pos->x + offset->x);
+	pre_z = (pos->z + offset->z);
+	pre_y = (pos->y + offset->y);
+	pos->x = (pre_x + pre_z) * cos(0.523599);
+	pos->y = ((pre_x - pre_z) * -sin(0.523599)) - pre_y;
+	pos->z = 0;
+	return (pos);
 }

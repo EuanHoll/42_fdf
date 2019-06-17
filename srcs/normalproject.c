@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   closeprogram.c                                     :+:    :+:            */
+/*   normalproject.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/05 13:53:06 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 14:28:26 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/06/10 16:55:27 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/06/10 17:27:20 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		closeprogram(void *param)
+t_point			*normalproject(t_point *pos, t_point *offset)
 {
-	(void)param;
-	exit(0);
-	return (0);
+	pos->x = pos->x + offset->x;
+	pos->y = (pos->z + offset->z) - (pos->y + offset->y);
+	pos->z = 0;
+	return (pos);
 }

@@ -17,8 +17,7 @@ int			fdfloop(void *param)
 	t_mlx *mlx;
 
 	mlx = (t_mlx *)param;
-	bcolour(mlx, LIGHT_BLUE);
-	//ft_bzero(mlx->img_add, SCREEN_VOL_BYTES);
+	bcolour(mlx, BLACK);
 	drawmap(mlx->map, mlx);
 	mlx_put_image_to_window(mlx->info, mlx->win, mlx->img, 0, 0);
 	drawinfo(mlx, LIME);

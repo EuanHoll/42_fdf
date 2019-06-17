@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   closeprogram.c                                     :+:    :+:            */
+/*   ft_ishex.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/06/05 13:53:06 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/05 14:28:26 by ehollidg      ########   odam.nl         */
+/*   Created: 2019/06/13 13:56:53 by ehollidg       #+#    #+#                */
+/*   Updated: 2019/06/13 13:56:53 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-int		closeprogram(void *param)
+int			ft_ishex(char c)
 {
-	(void)param;
-	exit(0);
-	return (0);
+	return ((c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f')
+				|| (c >= '0' && c <= '9'));
 }

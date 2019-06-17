@@ -12,39 +12,72 @@
 
 #include "fdf.h"
 
-static int	car_check(char *elem)
+static int	checknum(char *elem, int i)
+{
+	if (elem[i + 1] && elem[i] == '-' && ft_isdigit(elem[i + 1]))
+		return (1);
+	return (ft_isdigit(elem[i]));
+}
+
+static int	isvalidhexcode(char *elem, size_t place)
+{
+	size_t i;
+
+	i = 0;
+	while (i < 6)
+	{
+		if (!ft_ishex(elem[place + i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	ishex(int *i, char *elem)
+{
+	long j;
+
+	j = (long)(*i);
+	if ((long)ft_strlen(elem) - (j + 9) < 0)
+		return (0);
+	if (!(elem[j] == ',' && elem[j + 1] == '0' && elem[j + 2] == 'x'))
+		return (0);
+	if (!isvalidhexcode(elem, (size_t)(j + 3)))
+		return (0);
+	if (elem[j + 9] && elem[j + 9] != ' ')
+		return (0);
+	*i = (int)j + 9;
+	return (1);
+}
+
+static int	carcheck(char *elem)
 {
 	int i;
 
 	i = 0;
 	while (elem[i])
 	{
-		while (elem[i] >= 0 && elem[i] <= 9)
+		while (checknum(elem, i) || elem[i] == ' ')
 			i++;
-		if (elem[i] == ' ')
-			i++;
-		else if (!elem[i + 1] && elem[i] != ' ')
-			return (1);
-		else
-			return (-1);
+		if (elem[i] && !ishex(&i, elem))
+			return (0);
 	}
 	return (1);
 }
 
 int			validate(t_list *lst)
 {
-	int		size;
 	t_list	*elem;
+	int		i;
 
+	i = 0;
 	elem = lst;
-	size = ft_strcc((char *)elem->content, ' ');
 	while (elem != NULL)
 	{
-		if (ft_strcc((char *)elem->content, ' ') != size)
-			return (-1);
-		if (car_check((char *)elem->content) == -1)
-			return (-1);
+		if (!carcheck((char *)elem->content))
+			return (0);
 		elem = elem->next;
+		i++;
 	}
 	return (1);
 }

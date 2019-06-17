@@ -6,7 +6,7 @@
 /*   By: ehollidg <ehollidg@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/03/20 13:57:33 by ehollidg       #+#    #+#                */
-/*   Updated: 2019/06/07 13:11:55 by ehollidg      ########   odam.nl         */
+/*   Updated: 2019/06/10 13:33:31 by ehollidg      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
+int				ft_ishex(char c);
 int				ft_toabs(int n);
 int				ft_iswhitespace(char c);
 void			*ft_memalloc(size_t size);
@@ -118,5 +119,8 @@ double			ft_floor(double fl);
 double			ft_ceil(double cl);
 int				ft_get_next_line(const int fd, char **line);
 size_t			ft_strgetoc(char *str, char c, size_t i);
+void			ft_swap(void *a, void *b);
+char			*ft_strinit(char *str, size_t size);
+int				ft_hexttoint(char c);
 
 #endif

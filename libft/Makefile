@@ -6,7 +6,7 @@
 #    By: ehollidg <ehollidg@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/03/21 14:51:46 by ehollidg       #+#    #+#                 #
-#    Updated: 2019/06/07 13:12:12 by ehollidg      ########   odam.nl          #
+#    Updated: 2019/06/10 13:33:39 by ehollidg      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,29 +19,25 @@ SRC = atoi bzero isalnum isalpha isascii isdigit isprint itoa memalloc memccpy \
 	  strskip strmap strmapi strnequ strequ strsub lstnew lstadd lstdel lstiter \
 	  lstcpyelm lstdelone lstmap strcontains lstcnt min max floor ceil realloc \
 	  strtail strtailf strfroc strjoinf strextend struntil get_next_line \
-	  strgetoc
+	  strgetoc swap strinit ishex hextoint
 SRCF = $(SRC:%=ft_%.c)
 OBJ = $(SRCF:%.c=%.o)
 NAME = libft.a
 
+.PHONY: all clean fclean re
+
 all: $(NAME)
 
 $(NAME):
-	@echo "Compiling $(NAME)"
 	@gcc -Wall -Werror -Wextra -c $(SRCF) -g -I ./includes
-	@ar -rcsv $(NAME) $(OBJ)
-	@echo "Compilied $(NAME)"
+	@ar src $(NAME) $(OBJ)
 
 clean:
-	@echo "Cleaning"
 	@rm -f $(OBJ) ./includes/libft.gch
-	@echo "Finished"
 
 mclean: $(NAME) clean
 
 fclean: clean
-	@echo "Removing $(NAME)"
 	@rm -f $(NAME)
-	@echo "Finished"
 
 re: fclean all

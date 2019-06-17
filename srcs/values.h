@@ -13,18 +13,15 @@
 #ifndef VALUES_H
 # define VALUES_H
 
-/* Screen Dimensions */
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
 # define SCREEN_VOL SCREEN_HEIGHT * SCREEN_WIDTH
 # define SCREEN_VOL_BYTES SCREEN_VOL * 4
 
-/* Event Codes */
 # define CLOSE_EVENT 17
 # define KEY_PRESS_EVENT 2
 # define NULL_MASK 0
 
-/* Colour Codes */
 # define IMRE_PINK 0xeaa8dc
 # define DUTCH 0xff6600
 # define PYXIS 0xb300b3
@@ -49,5 +46,8 @@
 # define PINK 0xff00bf
 # define BLACK 0x000000
 # define WHITE 0xffffff
+
+# define ROT_AMOUNT 0.2
+# define TRANS_AMOUNT 5
 
 #endif
