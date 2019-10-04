@@ -17,9 +17,15 @@ SRC = main drawinfo hookcontrols readfile closeprogram fdfloop plotpoint \
 SRCF = $(SRC:%=srcs/%.c)
 OBJ = $(SRC:%=%.o)
 NAME = fdf
-MINILIBX = -I minilibx -L minilibx -lmlx -framework OpenGL -framework Appkit
+MINILIBX = -I minilibxMAC -L minilibxMAC -lmlx -framework OpenGL -framework Appkit
+MINILOC = minilibxMAC
 LIBFT = -I libft/includes -L libft -lft
 FLAGS = -Wall -Werror -Wextra
+
+ifeq ($(shell uname -s ), Linux)
+MINILIBX = -pthread -I minilibxLINUX -L minilibxLINUX -lmlx -lXext -lX11 -lm
+MINILOC = minilibxLINUX
+endif
 
 COLOURMAKE = \033[38;5;69m
 COLOURCLEAN = \033[38;5;159m
@@ -34,15 +40,15 @@ all: $(NAME)
 $(NAME): $(SRCF)
 	@echo "$(COlOURLIB)Compiling Libaries$(COLOURRESET)"
 	@make -C libft/
-	@make -C minilibx/
+	@make -C $(MINILOC)/
 	@echo "$(COLOURMAKE)Compiling Program$(COLOURRESET)"
-	@clang $(FLAGS) -I minilibx -I libft/includes -c $(SRCF)
+	@clang $(FLAGS) -I $(MINILOC) -I libft/includes -c $(SRCF)
 	@clang -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX)
 
 clean:
 	@echo "$(COLOURCLEAN)Cleaning Libaries$(COLOURRESET)"
 	@make -C libft/ clean
-	@make -C minilibx/ clean
+	@make -C $(MINILOC)/ clean
 	@rm -f $(OBJ)
 
 fclean: clean
