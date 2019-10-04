@@ -4,6 +4,6 @@
 
 42's Ftf
 
-Compatiblity
-Mac Os
-Linux - Requires X11
+Compatiblity:
+* Mac Os
+* Linux - Requires X11
